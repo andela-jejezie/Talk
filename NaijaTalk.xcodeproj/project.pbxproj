@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A581113D1C40B82000A3939C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581113C1C40B82000A3939C /* AppDelegate.swift */; };
+		A581113F1C40B82000A3939C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581113E1C40B82000A3939C /* ViewController.swift */; };
+		A58111421C40B82000A3939C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58111401C40B82000A3939C /* Main.storyboard */; };
+		A58111451C40B82000A3939C /* NaijaTalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A58111431C40B82000A3939C /* NaijaTalk.xcdatamodeld */; };
+		A58111471C40B82100A3939C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58111461C40B82100A3939C /* Assets.xcassets */; };
+		A581114A1C40B82100A3939C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58111481C40B82100A3939C /* LaunchScreen.storyboard */; };
+		A58111551C40B82100A3939C /* NaijaTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58111541C40B82100A3939C /* NaijaTalkTests.swift */; };
+		A58111601C40B82100A3939C /* NaijaTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581115F1C40B82100A3939C /* NaijaTalkUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A58111511C40B82100A3939C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A58111311C40B82000A3939C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A58111381C40B82000A3939C;
+			remoteInfo = NaijaTalk;
+		};
+		A581115C1C40B82100A3939C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A58111311C40B82000A3939C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A58111381C40B82000A3939C;
+			remoteInfo = NaijaTalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A58111391C40B82000A3939C /* NaijaTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaijaTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A581113C1C40B82000A3939C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A581113E1C40B82000A3939C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A58111411C40B82000A3939C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A58111441C40B82000A3939C /* NaijaTalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NaijaTalk.xcdatamodel; sourceTree = "<group>"; };
+		A58111461C40B82100A3939C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A58111491C40B82100A3939C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A581114B1C40B82100A3939C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A58111501C40B82100A3939C /* NaijaTalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaijaTalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58111541C40B82100A3939C /* NaijaTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaijaTalkTests.swift; sourceTree = "<group>"; };
+		A58111561C40B82100A3939C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A581115B1C40B82100A3939C /* NaijaTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaijaTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A581115F1C40B82100A3939C /* NaijaTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaijaTalkUITests.swift; sourceTree = "<group>"; };
+		A58111611C40B82100A3939C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A58111361C40B82000A3939C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A581114D1C40B82100A3939C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58111581C40B82100A3939C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A58111301C40B82000A3939C = {
+			isa = PBXGroup;
+			children = (
+				A581113B1C40B82000A3939C /* NaijaTalk */,
+				A58111531C40B82100A3939C /* NaijaTalkTests */,
+				A581115E1C40B82100A3939C /* NaijaTalkUITests */,
+				A581113A1C40B82000A3939C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A581113A1C40B82000A3939C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A58111391C40B82000A3939C /* NaijaTalk.app */,
+				A58111501C40B82100A3939C /* NaijaTalkTests.xctest */,
+				A581115B1C40B82100A3939C /* NaijaTalkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A581113B1C40B82000A3939C /* NaijaTalk */ = {
+			isa = PBXGroup;
+			children = (
+				A581113C1C40B82000A3939C /* AppDelegate.swift */,
+				A581113E1C40B82000A3939C /* ViewController.swift */,
+				A58111401C40B82000A3939C /* Main.storyboard */,
+				A58111461C40B82100A3939C /* Assets.xcassets */,
+				A58111481C40B82100A3939C /* LaunchScreen.storyboard */,
+				A581114B1C40B82100A3939C /* Info.plist */,
+				A58111431C40B82000A3939C /* NaijaTalk.xcdatamodeld */,
+			);
+			path = NaijaTalk;
+			sourceTree = "<group>";
+		};
+		A58111531C40B82100A3939C /* NaijaTalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				A58111541C40B82100A3939C /* NaijaTalkTests.swift */,
+				A58111561C40B82100A3939C /* Info.plist */,
+			);
+			path = NaijaTalkTests;
+			sourceTree = "<group>";
+		};
+		A581115E1C40B82100A3939C /* NaijaTalkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A581115F1C40B82100A3939C /* NaijaTalkUITests.swift */,
+				A58111611C40B82100A3939C /* Info.plist */,
+			);
+			path = NaijaTalkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A58111381C40B82000A3939C /* NaijaTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A58111641C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalk" */;
+			buildPhases = (
+				A58111351C40B82000A3939C /* Sources */,
+				A58111361C40B82000A3939C /* Frameworks */,
+				A58111371C40B82000A3939C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NaijaTalk;
+			productName = NaijaTalk;
+			productReference = A58111391C40B82000A3939C /* NaijaTalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A581114F1C40B82100A3939C /* NaijaTalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A58111671C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalkTests" */;
+			buildPhases = (
+				A581114C1C40B82100A3939C /* Sources */,
+				A581114D1C40B82100A3939C /* Frameworks */,
+				A581114E1C40B82100A3939C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A58111521C40B82100A3939C /* PBXTargetDependency */,
+			);
+			name = NaijaTalkTests;
+			productName = NaijaTalkTests;
+			productReference = A58111501C40B82100A3939C /* NaijaTalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A581115A1C40B82100A3939C /* NaijaTalkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A581116A1C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalkUITests" */;
+			buildPhases = (
+				A58111571C40B82100A3939C /* Sources */,
+				A58111581C40B82100A3939C /* Frameworks */,
+				A58111591C40B82100A3939C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A581115D1C40B82100A3939C /* PBXTargetDependency */,
+			);
+			name = NaijaTalkUITests;
+			productName = NaijaTalkUITests;
+			productReference = A581115B1C40B82100A3939C /* NaijaTalkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A58111311C40B82000A3939C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Johnson Ejezie";
+				TargetAttributes = {
+					A58111381C40B82000A3939C = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					A581114F1C40B82100A3939C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = A58111381C40B82000A3939C;
+					};
+					A581115A1C40B82100A3939C = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = A58111381C40B82000A3939C;
+					};
+				};
+			};
+			buildConfigurationList = A58111341C40B82000A3939C /* Build configuration list for PBXProject "NaijaTalk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A58111301C40B82000A3939C;
+			productRefGroup = A581113A1C40B82000A3939C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A58111381C40B82000A3939C /* NaijaTalk */,
+				A581114F1C40B82100A3939C /* NaijaTalkTests */,
+				A581115A1C40B82100A3939C /* NaijaTalkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A58111371C40B82000A3939C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A581114A1C40B82100A3939C /* LaunchScreen.storyboard in Resources */,
+				A58111471C40B82100A3939C /* Assets.xcassets in Resources */,
+				A58111421C40B82000A3939C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A581114E1C40B82100A3939C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58111591C40B82100A3939C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A58111351C40B82000A3939C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A581113F1C40B82000A3939C /* ViewController.swift in Sources */,
+				A58111451C40B82000A3939C /* NaijaTalk.xcdatamodeld in Sources */,
+				A581113D1C40B82000A3939C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A581114C1C40B82100A3939C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58111551C40B82100A3939C /* NaijaTalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58111571C40B82100A3939C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58111601C40B82100A3939C /* NaijaTalkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A58111521C40B82100A3939C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A58111381C40B82000A3939C /* NaijaTalk */;
+			targetProxy = A58111511C40B82100A3939C /* PBXContainerItemProxy */;
+		};
+		A581115D1C40B82100A3939C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A58111381C40B82000A3939C /* NaijaTalk */;
+			targetProxy = A581115C1C40B82100A3939C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A58111401C40B82000A3939C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A58111411C40B82000A3939C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A58111481C40B82100A3939C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A58111491C40B82100A3939C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A58111621C40B82100A3939C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A58111631C40B82100A3939C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A58111651C40B82100A3939C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NaijaTalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A58111661C40B82100A3939C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NaijaTalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A58111681C40B82100A3939C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NaijaTalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaijaTalk.app/NaijaTalk";
+			};
+			name = Debug;
+		};
+		A58111691C40B82100A3939C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NaijaTalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaijaTalk.app/NaijaTalk";
+			};
+			name = Release;
+		};
+		A581116B1C40B82100A3939C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NaijaTalkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NaijaTalk;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		A581116C1C40B82100A3939C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NaijaTalkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andela.NaijaTalkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NaijaTalk;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A58111341C40B82000A3939C /* Build configuration list for PBXProject "NaijaTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58111621C40B82100A3939C /* Debug */,
+				A58111631C40B82100A3939C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A58111641C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58111651C40B82100A3939C /* Debug */,
+				A58111661C40B82100A3939C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A58111671C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58111681C40B82100A3939C /* Debug */,
+				A58111691C40B82100A3939C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A581116A1C40B82100A3939C /* Build configuration list for PBXNativeTarget "NaijaTalkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A581116B1C40B82100A3939C /* Debug */,
+				A581116C1C40B82100A3939C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A58111431C40B82000A3939C /* NaijaTalk.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A58111441C40B82000A3939C /* NaijaTalk.xcdatamodel */,
+			);
+			currentVersion = A58111441C40B82000A3939C /* NaijaTalk.xcdatamodel */;
+			path = NaijaTalk.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A58111311C40B82000A3939C /* Project object */;
+}
