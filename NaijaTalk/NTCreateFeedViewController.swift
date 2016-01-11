@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTCreateFeedViewController: UIViewController {
+class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITabBarControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var postLogBtn: UIButton!
@@ -46,18 +46,38 @@ class NTCreateFeedViewController: UIViewController {
     
     
     func postToDatabase(sender: AnyObject) {
+        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.view.addSubview(spinner)
+        spinner.mode = MBProgressHUDMode.Indeterminate
+        spinner.delegate = self
+        spinner.labelText = "Saving"
+        spinner.detailsLabelText = "Just a second :)"
+        spinner.square = true
+        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.post()
+            }) { () -> Void in
+           self.tabBarController?.selectedIndex = 1
+        }
+//        spinner.showWhileExecuting("post", onTarget: self, withObject: nil, animated: true)
+
+    }
+    
+    func post(){
         let userLogRef = NTFirebaseHelper.shared.logsRef?.childByAppendingPath(NTFirebaseHelper.shared.sharedUser.uid)
         let logRef = userLogRef?.childByAutoId()
         let log:NTlogs = NTlogs(postLogger: NTFirebaseHelper.shared.sharedUser.uid, uid: (logRef?.key)!, headline: topicTextField.text!, location:locationTextField.text! , logDetails: descriptionTextView.text, logImage: imageBase64, date: NTFirebaseHelper.shared.dateToString!, likes: 0, numberOfComment: 0)
-        print(log.toAnyObject())
-        
         logRef!.setValue(log.toAnyObject()) { (fbError:NSError!, firebase:Firebase!) -> Void in
             if fbError == nil {
                 
             }else {
                 print("error \(fbError.description)")
             }
+            
         }
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        return true
     }
 
 }
@@ -120,7 +140,7 @@ extension NTCreateFeedViewController: UIImagePickerControllerDelegate, UINavigat
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .ScaleToFill
         imageView.image = chosenImage
-        let imageData = UIImagePNGRepresentation(chosenImage)
+        let imageData = UIImageJPEGRepresentation(chosenImage, 0.5)
         imageBase64 = (imageData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0)))!
         dismissViewControllerAnimated(true, completion: nil)
     }

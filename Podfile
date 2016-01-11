@@ -8,6 +8,7 @@ pod 'Firebase', '>= 2.5.0'
 pod 'Google/SignIn'
 pod 'SDWebImage', '~>3.7'
 pod 'IQKeyboardManager'
+pod 'MBProgressHUD', '~> 0.9.2'
 end
 
 target 'NaijaTalkTests' do
