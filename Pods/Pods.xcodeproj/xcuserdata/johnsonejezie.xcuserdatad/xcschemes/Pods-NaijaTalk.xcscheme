@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8ED58D52016339C84391672F'
+               BlueprintIdentifier = 'A2F93D6D22DDC738DCA9FC9E'
                BlueprintName = 'Pods-NaijaTalk'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-NaijaTalk.a'>

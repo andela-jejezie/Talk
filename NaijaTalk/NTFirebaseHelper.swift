@@ -16,55 +16,48 @@ class NTFirebaseHelper {
     }
     
     lazy var usersRef: Firebase? = {
-        return Firebase(url:"https://naijatalk.firebaseio.com/").childByAppendingPath("user")
+        return Firebase(url:"https://naijatalk.firebaseio.com/").childByAppendingPath("users")
+    }()
+    
+    lazy var logsRef: Firebase? = {
+        return Firebase(url:"https://naijatalk.firebaseio.com/").childByAppendingPath("logs")
     }()
     
     lazy var ref: Firebase? = {
         return Firebase(url:"https://naijatalk.firebaseio.com/")
+    }()
+    
+    lazy var dateToString: String? = {
+        let dateFormater = NSDateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormater.stringFromDate(NSDate())
     }()
 
     
     var sharedUser:NTUser!
     
     func saveProviderData(userProfile:[String:AnyObject], provider:String) -> NTUser {
-        let usersRef = ref!.childByAppendingPath("user")
         
-        let userRef = usersRef.childByAppendingPath(userProfile["id"] as! String)
+        
+        let userRef = usersRef!.childByAppendingPath(userProfile["id"] as! String)
         let user: NTUser?
         if (provider == "google") {
-            user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"")
+            user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"", createdDate:dateToString!)
         }
         else {
-            user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"]!["data"]!!["url"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"")
+            user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"]!["data"]!!["url"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"", createdDate:dateToString!)
         }
         userRef.setValue(user!.toAnyObject())
         
         return user!
     }
     
-    /* Helper function to turn a snapshot into a dictionary for easier access */
-    //    func snapshotToDictionary(snapshot: FDataSnapshot) -> Dictionary<String, Any> {
-    //        var d = Dictionary<String, Any>()
-    //
-    //        d["routeTag"] = snapshot.value.objectForKey("routeTag") as String
-    //        d["heading"] = snapshot.value.objectForKey("heading") as Int
-    //        d["id"] = snapshot.value.objectForKey("id") as Int
-    //        d["lat"] = snapshot.value.objectForKey("lat") as Double
-    //        d["lon"] = snapshot.value.objectForKey("lon") as Double
-    //        d["predictable"] = snapshot.value.objectForKey("predictable") as Bool
-    //        d["secsSinceReport"] = snapshot.value.objectForKey("secsSinceReport") as Int
-    //        d["speedKmHr"] = snapshot.value.objectForKey("speedKmHr") as Int
-    //        d["timestamp"] = snapshot.value.objectForKey("timestamp") as Double
-    //        d["vtype"] = snapshot.value.objectForKey("vtype") as String
-    //
-    //        if snapshot.value.objectForKey("dirTag") {
-    //            d["dirTag"] = snapshot.value.objectForKey("dirTag") as String // Sometimes missing
-    //        } else {
-    //            d["dirTag"] = "OB"
-    //        }
-    //        
-    //        return d
-    //    }
+    // Helper function to turn a snapshot into a dictionary for easier access
+    func snapshotToUserObject(snapshot: FDataSnapshot) -> NTUser {
+        let userObject : NTUser = NTUser(name: snapshot.value.objectForKey("name") as! String, email: snapshot.value.objectForKey("email") as? String, gender: snapshot.value.objectForKey("gender") as! String, uid: snapshot.value.objectForKey("uid") as! String, picture: snapshot.value.objectForKey("picture") as? String, stateOfOrigin: snapshot.value.objectForKey("stateOfOrigin") as? String, job: snapshot.value.objectForKey("job") as? String, stateOfResidence: snapshot.value.objectForKey("stateOfResidence") as? String, createdDate:snapshot.value.objectForKey("createdDate") as! String)
+        
+        return userObject
+    }
     
     
 }

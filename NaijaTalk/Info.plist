@@ -24,7 +24,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb443047499226418</string>
-                <string>fbauth2</string>
+				<string>fbauth2</string>
 			</array>
 		</dict>
 		<dict>
@@ -46,6 +46,25 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>92952a26d293f1a3156a9e7aa52641b3ee25ad93</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>8aORwPVbvybSdqBuw5DJrxTN5</string>
+					<key>consumerSecret</key>
+					<string>2014iZwuQOct3fDBTxTMGlTGnY4TAiRkA9z0KRUKRy4U8ltZ38</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>443047499226418</string>
 	<key>FacebookDisplayName</key>

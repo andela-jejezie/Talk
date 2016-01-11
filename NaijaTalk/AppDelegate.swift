@@ -9,6 +9,10 @@
 import UIKit
 import Google
 import FBSDKLoginKit
+import Fabric
+import TwitterKit
+import IQKeyboardManagerSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate {
@@ -18,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+//        IQKeyboardManager.sharedManager().enable = true
+        Fabric.with([Twitter.self])
         return true
     }
 

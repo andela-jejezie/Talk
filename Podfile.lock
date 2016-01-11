@@ -25,6 +25,7 @@ PODS:
   - GoogleSymbolUtilities (1.0.3)
   - GoogleUtilities (1.1.0):
     - GoogleSymbolUtilities (~> 1.0.0)
+  - IQKeyboardManager (3.3.5)
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
@@ -32,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - Firebase (>= 2.5.0)
   - Google/SignIn
+  - IQKeyboardManager
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   GoogleSignIn: 79929b51e6299c69f1197bbd9c7a1367d523ecd8
   GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
   GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
 
 COCOAPODS: 0.39.0

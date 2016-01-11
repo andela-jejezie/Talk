@@ -18,8 +18,9 @@ class NTUser {
     let stateOfOrigin: String?
     let stateOfResidence: String?
     let job: String!
+    let createdDate: String!
     
-    init(name:String, email:String?, gender:String, uid:String, picture:String?, stateOfOrigin:String?, job:String?, stateOfResidence:String?) {
+    init(name:String, email:String?, gender:String, uid:String, picture:String?, stateOfOrigin:String?, job:String?, stateOfResidence:String?, createdDate:String) {
         self.name = name
         if let emailAddress:String = email {
            self.email = emailAddress
@@ -48,6 +49,7 @@ class NTUser {
         }else {
             self.job = ""
         }
+        self.createdDate = createdDate
         
         
     }
@@ -61,9 +63,12 @@ class NTUser {
             "picture": picture,
             "job":job,
             "stateOfOrigin":stateOfOrigin,
-            "stateOfResidence":stateOfResidence
+            "stateOfResidence":stateOfResidence,
+            "createdDate":createdDate
         ]
     }
+    
+
     
     
 }

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-NaijaTalk.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>15A0B318206B331588FBA472EBB57671</key>
+		<key>3F9317F855B94A54B7C2E18FD5A2751D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB4DD6221CDA4F50ABB6840AAFEF8308</key>
+		<key>62889EA21F61B11563168A676E2CABAF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FD12BEEEAAC3CE8BE6B595F9DD0A32C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,6 +7,7 @@ target 'NaijaTalk' do
 pod 'Firebase', '>= 2.5.0'
 pod 'Google/SignIn'
 pod 'SDWebImage', '~>3.7'
+pod 'IQKeyboardManager'
 end
 
 target 'NaijaTalkTests' do

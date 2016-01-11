@@ -9,6 +9,7 @@
 import UIKit
 import Google
 import FBSDKLoginKit
+import TwitterKit
 
 class NTLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
@@ -27,16 +28,54 @@ class NTLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDel
     }
     
     
+    @IBAction func loginWithTwitter(sender: AnyObject) {
+        Twitter.sharedInstance().logInWithCompletion { (session:TWTRSession?, error:NSError?) -> Void in
+            if (session != nil) {
+                print("signed in as \(session!.authToken)")
+                let authParameters: [NSObject : AnyObject] = [
+                    "user_id":session!.userID,
+                    "oauth_token":session!.authToken,
+                    "oauth_token_secret":session!.authTokenSecret
+                ]
+                NTFirebaseHelper.shared.ref!.authWithOAuthProvider("twitter", parameters: authParameters, withCompletionBlock: { (twAuthError:NSError!, twAuthData:FAuthData!) -> Void in
+                    print("firebase error \(twAuthError.description)")
+                    print("this is authdata \(twAuthData.providerData) ")
+                })
+            } else {
+                print("error: \(error!.localizedDescription)");
+            }
+        }
+    }
     @IBAction func loginWithFacebook(sender: AnyObject) {
         let loginManager:FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self) { (result:FBSDKLoginManagerLoginResult!, error:NSError!) -> Void in
             print("error \(error)")
             if ((FBSDKAccessToken.currentAccessToken()) != nil) {
                 NTFirebaseHelper.shared.ref!.authWithOAuthProvider("facebook", token: FBSDKAccessToken.currentAccessToken().tokenString, withCompletionBlock: { (fbError:NSError!, fbAuthData:FAuthData!) -> Void in
+                    
+                   
+                    
+
                     if let userProfile:[String:AnyObject] = fbAuthData.providerData["cachedUserProfile"] as? [String: AnyObject] {
-                        print("this is authdata \(fbAuthData.providerData["cachedUserProfile"]) ")
-                       NTFirebaseHelper.shared.sharedUser = NTFirebaseHelper.shared.saveProviderData(userProfile, provider: fbAuthData.provider)
-                        self.performSegueWithIdentifier("loginToUpdateSegue", sender: nil)
+                        
+                        let userRef =  NTFirebaseHelper.shared.usersRef?.childByAppendingPath(userProfile["id"] as! String)
+                        userRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
+                            userRef?.removeAllObservers();
+                            if  (snapshot.exists()) {
+                                
+                                print("this is authdata \(snapshot) ")
+                                NTFirebaseHelper.shared.sharedUser = NTFirebaseHelper.shared.snapshotToUserObject(snapshot)
+                                
+                                self.performSegueWithIdentifier("LoginToTabBar", sender: nil)
+                                
+                            }else {
+                                print("this is authdata \(snapshot.value) ")
+                                NTFirebaseHelper.shared.sharedUser = NTFirebaseHelper.shared.saveProviderData(userProfile, provider: fbAuthData.provider)
+                                self.performSegueWithIdentifier("loginToUpdateSegue", sender: nil)
+                                
+                            }
+                        })
+
                         
                     }
                 })

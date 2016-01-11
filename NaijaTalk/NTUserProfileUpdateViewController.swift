@@ -35,14 +35,26 @@ class NTUserProfileUpdateViewController: UIViewController {
         updateLaterBtn.layer.cornerRadius = 5
         updateLaterBtn.clipsToBounds = true
         updateNowBtn.clipsToBounds = true
+        updateNowBtn.backgroundColor = UIColor(red: 0.15, green: 0.81, blue: 0.35, alpha: 1)
+        updateLaterBtn.backgroundColor = UIColor(red: 0.95, green: 0.27, blue: 0.20, alpha: 1)
         
     }
     
 
     @IBAction func updateNow(sender: AnyObject) {
-        let user:NTUser = NTUser(name: NTFirebaseHelper.shared.sharedUser.name, email: NTFirebaseHelper.shared.sharedUser.email, gender: NTFirebaseHelper.shared.sharedUser.gender, uid: NTFirebaseHelper.shared.sharedUser.uid, picture: NTFirebaseHelper.shared.sharedUser.picture, stateOfOrigin: self.stateOfOriginTextField.text, job: self.jobTextField.text, stateOfResidence: self.stateOfResidenceTextField.text)
-        let userRef = NTFirebaseHelper.shared.usersRef?.childByAppendingPath(user.uid)
-        userRef?.setValue(user.toAnyObject())
+        let update: [NSObject : AnyObject] = [
+            "stateOfOrigin":self.stateOfOriginTextField.text!,
+            "job":self.jobTextField.text!,
+            "stateOfResidence": self.stateOfResidenceTextField.text!
+        ]
+//        let user:NTUser = NTUser(name: NTFirebaseHelper.shared.sharedUser.name, email: NTFirebaseHelper.shared.sharedUser.email, gender: NTFirebaseHelper.shared.sharedUser.gender, uid: NTFirebaseHelper.shared.sharedUser.uid, picture: NTFirebaseHelper.shared.sharedUser.picture, stateOfOrigin: self.stateOfOriginTextField.text, job: self.jobTextField.text, stateOfResidence: self.stateOfResidenceTextField.text)
+        let userRef = NTFirebaseHelper.shared.usersRef?.childByAppendingPath(NTFirebaseHelper.shared.sharedUser.uid)
+        userRef?.updateChildValues(update, withCompletionBlock: { (fbError:NSError!, firebase:Firebase!) -> Void in
+            if fbError == nil {
+                self.performSegueWithIdentifier("ProfileUpdateToTabBar", sender: nil)
+            }
+        })
+        
     }
 
 
