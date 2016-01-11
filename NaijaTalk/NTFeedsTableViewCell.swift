@@ -10,6 +10,8 @@ import UIKit
 
 class NTFeedsTableViewCell: UITableViewCell {
 
+    @IBOutlet var numOfLikeLabel: UILabel!
+    @IBOutlet var numOfCommentLabel: UILabel!
     @IBOutlet var cardView: UIView!
     @IBOutlet var likeBtn: UIButton!
     @IBOutlet var commentBtn: UIButton!
@@ -30,16 +32,21 @@ class NTFeedsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        cardSetup()
+        imageSetup()
+    }
+    
     func cardSetup(){
         cardView.alpha = 1
         cardView.layer.masksToBounds = false
         cardView.layer.cornerRadius = 1
-        cardView.layer.shadowOffset = CGSizeMake(-0.2, 0.2)
-        cardView.layer.shadowRadius = 1
-        cardView.layer.shadowOpacity = 0.2
-        
-        let path = UIBezierPath(rect: cardView.bounds)
-        cardView.layer.shadowPath = path.CGPath
+//        cardView.layer.shadowOffset = CGSizeMake(-0.2, 0.2)
+//        cardView.layer.shadowRadius = 1
+//        cardView.layer.shadowOpacity = 0.2
+//        
+//        let path = UIBezierPath(rect: cardView.bounds)
+//        cardView.layer.shadowPath = path.CGPath
         self.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
         
     }

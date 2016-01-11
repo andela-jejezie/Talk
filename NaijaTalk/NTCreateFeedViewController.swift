@@ -58,8 +58,6 @@ class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITab
             }) { () -> Void in
            self.tabBarController?.selectedIndex = 1
         }
-//        spinner.showWhileExecuting("post", onTarget: self, withObject: nil, animated: true)
-
     }
     
     func post(){

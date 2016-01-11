@@ -54,6 +54,18 @@ class NTUser {
         
     }
     
+    init(snapshot:FDataSnapshot!) {
+        name = snapshot.value.objectForKey("name") as! String
+        email = snapshot.value.objectForKey("email") as? String
+        gender = snapshot.value.objectForKey("gender") as! String
+        uid = snapshot.value.objectForKey("uid") as! String
+        picture = snapshot.value.objectForKey("picture") as? String
+        stateOfOrigin = snapshot.value.objectForKey("stateOfOrigin") as? String
+        job = snapshot.value.objectForKey("job") as? String
+        stateOfResidence = snapshot.value.objectForKey("stateOfResidence") as? String
+        createdDate = snapshot.value.objectForKey("createdDate") as! String
+    }
+    
     func toAnyObject() -> AnyObject {
         return [
             "name": name,

@@ -16,7 +16,7 @@ class NTlogs {
     let location: String!
     let logDetail: String!
     let logImage: String!
-    let date: String!
+    let createdDate: String!
     var likes: Int = 0
     var numberOfComment: Int = 0
     
@@ -32,13 +32,26 @@ class NTlogs {
             self.logImage = ""
         }
         
-        self.date = date
+        self.createdDate = date
         if let logLikes = likes {
             self.likes = logLikes
         }
         if let numComment = numberOfComment {
             self.numberOfComment = numComment
         }
+    }
+    
+    init(snapshot:FDataSnapshot!) {
+        
+        postLogger = snapshot.value.objectForKey("postLogger") as! String
+        headline = snapshot.value.objectForKey("headline") as? String
+        location = snapshot.value.objectForKey("location") as! String
+        uid = snapshot.value.objectForKey("uid") as! String
+        logDetail = snapshot.value.objectForKey("logDetail") as? String
+        logImage = snapshot.value.objectForKey("logImage") as? String
+        likes = (snapshot.value.objectForKey("likes") as? Int)!
+        numberOfComment = (snapshot.value.objectForKey("numberOfComment") as? Int)!
+        createdDate = snapshot.value.objectForKey("date") as! String
     }
     
     func toAnyObject() -> AnyObject {
@@ -49,7 +62,7 @@ class NTlogs {
             "location": location,
             "logDetail": logDetail,
             "logImage":logImage,
-            "date":date,
+            "date":createdDate,
             "likes":likes,
             "numberOfComment":numberOfComment
         ]

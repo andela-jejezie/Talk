@@ -64,7 +64,7 @@ class NTLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDel
                             if  (snapshot.exists()) {
                                 
                                 print("this is authdata \(snapshot) ")
-                                NTFirebaseHelper.shared.sharedUser = NTFirebaseHelper.shared.snapshotToUserObject(snapshot)
+                                NTFirebaseHelper.shared.sharedUser = NTUser(snapshot: snapshot)
                                 
                                 self.performSegueWithIdentifier("LoginToTabBar", sender: nil)
                                 
