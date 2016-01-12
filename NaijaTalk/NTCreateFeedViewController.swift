@@ -56,7 +56,7 @@ class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITab
         spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.post()
             }) { () -> Void in
-           self.tabBarController?.selectedIndex = 1
+                self.tabBarController?.selectedIndex = 1
         }
     }
     

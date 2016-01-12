@@ -8,43 +8,115 @@
 
 import UIKit
 
-class NTFeedDetailsTableViewController: UITableViewController {
-    var arr:[AnyObject] = [
-        
-         [
-            "profileImageView": "defaultImage",
-            "nameLabel": "Johnson Chidi",
-            "titleLabel" : "Testing VFL",
-            "bodyLabel" : "Been thinking of an app that would contribute to national development. Improving communication between the people and the government seem to be interesting to me. Plus having a way of helping people hold the government accountable. So I’m thinking of a mobile app where people can log issues. Imagine a village with a no good drinking water and someone goes into the app and open an issue on this. With the location of the village, the app will display the state representative of the constituency of the village, the federal representative of the constituency of the village, the senatorial district and the senator, the local government chairman etc. Now other users can comment and also like the issue. Issues with more likes are considered highly important."
-        ]
-        
-    ]
+class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDelegate {
+    
+    var feed:NTlogs!
+    var feedlogger:NTUser!
+    var combinedArray:[AnyObject] = []
+    var commentRef:Firebase!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
-
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        commentRef = NTFirebaseHelper.shared.commentsRef?.childByAppendingPath(feed.uid)
+        self.combinedArray.append(self.feed)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.view.addSubview(spinner)
+        spinner.mode = MBProgressHUDMode.Indeterminate
+        spinner.delegate = self
+        spinner.labelText = "Loading..."
+        spinner.detailsLabelText = "Just a second :)"
+        spinner.square = true
+        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.getComment()
+            }) { () -> Void in
+//                spinner.hide(true)
+        }
+    }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        commentRef.removeAllObservers()
+    }
+    
+    func getComment() {
+        commentRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
+            var comments = [Comment]()
+            for item in snapshot.children {
+                if let childSnap:FDataSnapshot = item as? FDataSnapshot {
+                    print(childSnap)
+                        let comment = Comment(snapshot: childSnap)
+                        comments.append(comment)
+                }
+            }
+            
+            if comments.count > 0 {
+                self.combinedArray = self.combinedArray + comments
+                comments = []
+            }
+            self.tableView.reloadData()
+        })
     }
 
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return arr.count
+        return combinedArray.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let arrdict = arr[indexPath.row]
-        let cell:NTCommentTableViewCell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! NTCommentTableViewCell
-        cell.profileImageView.image = UIImage(named: arrdict["profileImageView"] as! String)
-        cell.nameLabel.text = arrdict["nameLabel"] as? String
-        cell.bodyLabel.text = arrdict["bodyLabel"] as? String
-
-        return cell
+        if indexPath.row == 0 {
+            let cell:NTFeedDetailTableViewCell = tableView.dequeueReusableCellWithIdentifier("DetailFeedCell", forIndexPath: indexPath) as! NTFeedDetailTableViewCell
+            cell.nameLabel.text = feedlogger.name
+            cell.headlineLabel.text = feed.headline
+            cell.postDetailLabel.text = feed.logDetail
+            cell.commentBtn.addTarget(self, action: "addComment:", forControlEvents: .TouchUpInside)
+            cell.likeBtn.addTarget(self, action: "like:", forControlEvents: .TouchUpInside)
+            if feed.numberOfComment == 0 {
+                cell.numberOfComment.hidden = true
+            }else {
+                cell.numberOfComment.text = String(feed.numberOfComment) + " Comment"
+            }
+            if feed.likes == 0 {
+                cell.numberOfLikes.hidden = true
+            }else {
+                cell.numberOfLikes.text = String(feed.likes) + " Like"
+            }
+            cell.profileImageView.sd_setImageWithURL(NSURL(string:
+                feedlogger.picture!), placeholderImage: UIImage(named: "defaultImage"))
+            if feed.logImage.isEmpty {
+                cell.postImageLabel?.image = UIImage(named: "flag")
+            }else {
+                let decodedImageData = NSData(base64EncodedString: feed.logImage, options: NSDataBase64DecodingOptions(rawValue: 0))
+                cell.postImageLabel?.image = UIImage(data: decodedImageData!)
+            }
+            return cell
+        }else {
+            let cell:NTCommentTableViewCell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! NTCommentTableViewCell
+            let comment:Comment = combinedArray[indexPath.row] as! Comment
+            cell.bodyLabel.text = comment.comment
+            cell.nameLabel.text = comment.commentOwnerName
+            cell.profileImageView.sd_setImageWithURL(NSURL(string:
+                comment.commentOwnerPic), placeholderImage: UIImage(named: "defaultImage"))
+          return cell
+        }
+        
+    }
+    
+    func addComment(sender: UIButton) {
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("NTAddCommentViewController") as! NTAddCommentViewController
+        controller.feed = feed
+        let navController = UINavigationController(rootViewController: controller)
+        self.presentViewController(navController, animated: true, completion: nil)
+    }
+    
+    func like(sender:UIButton) {
+        NTFirebaseHelper.shared.updateFeedLike(feed)
     }
 
     
@@ -56,49 +128,5 @@ class NTFeedDetailsTableViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }

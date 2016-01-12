@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTCurrentUserLogViewController: UIViewController {
+class NTCurrentUserLogViewController: UIViewController, MBProgressHUDDelegate {
 
     @IBOutlet var tableView: UITableView!
     private var feeds = [NTlogs]()
@@ -17,12 +17,35 @@ class NTCurrentUserLogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 250
-        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.view.addSubview(spinner)
+        spinner.mode = MBProgressHUDMode.Indeterminate
+        spinner.delegate = self
+        spinner.labelText = "Loading..."
+        spinner.detailsLabelText = "Just a second :)"
+        spinner.square = true
+        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.getMyFedds()
+            }) { () -> Void in
+//                spinner.hide(true)
+        }
+        
+
+
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        currentUserLogRef?.removeAllObservers()
+    }
+    
+    func getMyFedds(){
         var logFeds = [NTlogs]()
         currentUserLogRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
             for item in snapshot.children {
@@ -33,16 +56,25 @@ class NTCurrentUserLogViewController: UIViewController {
             self.feeds = logFeds
             self.tableView.reloadData()
         })
-
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(true)
-        currentUserLogRef?.removeAllObservers()
+    func addComment(sender: UIButton) {
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("NTAddCommentViewController") as! NTAddCommentViewController
+        controller.feed = feeds[sender.tag]
+        self.presentViewController(controller, animated: true, completion: nil)
+        
+    }
+    
+    func like(sender:UIButton) {
+        let feed:NTlogs = feeds[sender.tag]
+        NTFirebaseHelper.shared.updateFeedLike(feed)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "MyFeedDetails" {
+            let controller = segue.destinationViewController as! NTFeedDetailsTableViewController
+            controller.feed = sender as! NTlogs
+            controller.feedlogger = NTFirebaseHelper.shared.sharedUser
       
         }
     }
@@ -65,9 +97,11 @@ extension NTCurrentUserLogViewController: UITableViewDelegate, UITableViewDataSo
 
         cell.likeBtn.tag = indexPath.row
         cell.commentBtn.tag = indexPath.row
+        cell.likeBtn.addTarget(self, action: "like:", forControlEvents: .TouchUpInside)
+        cell.commentBtn.addTarget(self, action: "addcomment", forControlEvents: .TouchUpInside)
         
         cell.feedTopicLabel.text = feed.headline
-        cell.feedDescriptionTextView.text = feed.logDetail
+        cell.detailLabel.text = feed.logDetail
         cell.timeLabel.text = feed.createdDate
         
         if feed.logImage.isEmpty {

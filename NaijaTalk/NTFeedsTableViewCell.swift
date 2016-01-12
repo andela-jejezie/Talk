@@ -10,12 +10,13 @@ import UIKit
 
 class NTFeedsTableViewCell: UITableViewCell {
 
+    @IBOutlet var detailLabel: UILabel!
     @IBOutlet var numOfLikeLabel: UILabel!
     @IBOutlet var numOfCommentLabel: UILabel!
     @IBOutlet var cardView: UIView!
     @IBOutlet var likeBtn: UIButton!
     @IBOutlet var commentBtn: UIButton!
-    @IBOutlet var feedDescriptionTextView: UITextView!
+//    @IBOutlet var feedDescriptionTextView: UITextView!
     @IBOutlet var feedTopicLabel: UILabel!
     @IBOutlet var feedImageView: UIImageView!
     @IBOutlet var timeLabel: UILabel!

@@ -47,7 +47,6 @@ class NTUserProfileUpdateViewController: UIViewController {
             "job":self.jobTextField.text!,
             "stateOfResidence": self.stateOfResidenceTextField.text!
         ]
-//        let user:NTUser = NTUser(name: NTFirebaseHelper.shared.sharedUser.name, email: NTFirebaseHelper.shared.sharedUser.email, gender: NTFirebaseHelper.shared.sharedUser.gender, uid: NTFirebaseHelper.shared.sharedUser.uid, picture: NTFirebaseHelper.shared.sharedUser.picture, stateOfOrigin: self.stateOfOriginTextField.text, job: self.jobTextField.text, stateOfResidence: self.stateOfResidenceTextField.text)
         let userRef = NTFirebaseHelper.shared.usersRef?.childByAppendingPath(NTFirebaseHelper.shared.sharedUser.uid)
         userRef?.updateChildValues(update, withCompletionBlock: { (fbError:NSError!, firebase:Firebase!) -> Void in
             if fbError == nil {
@@ -59,5 +58,6 @@ class NTUserProfileUpdateViewController: UIViewController {
 
 
     @IBAction func updateLater(sender: AnyObject) {
+        self.performSegueWithIdentifier("ProfileUpdateToTabBar", sender: nil)
     }
 }

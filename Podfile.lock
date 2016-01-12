@@ -30,6 +30,7 @@ PODS:
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
+  - SVProgressHUD (HEAD based on 2.0-beta)
 
 DEPENDENCIES:
   - Firebase (>= 2.5.0)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - MBProgressHUD (~> 0.9.2)
   - SDWebImage (~> 3.7)
+  - SVProgressHUD (HEAD)
 
 SPEC CHECKSUMS:
   Firebase: 744617c0733b45198f9486ebd5cac64ec2d10d79
@@ -51,5 +53,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
 
 COCOAPODS: 0.39.0

@@ -39,6 +39,7 @@
 		A5E7F40B1C44E258003027F2 /* NTFeedDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40A1C44E258003027F2 /* NTFeedDetailsTableViewController.swift */; };
 		A5E7F40D1C450947003027F2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40C1C450947003027F2 /* Comment.swift */; };
 		A5E7F40F1C450CAD003027F2 /* NTAddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40E1C450CAD003027F2 /* NTAddCommentViewController.swift */; };
+		A5E7F4111C45B2D1003027F2 /* activityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F4101C45B2D1003027F2 /* activityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		A5E7F40A1C44E258003027F2 /* NTFeedDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTFeedDetailsTableViewController.swift; sourceTree = "<group>"; };
 		A5E7F40C1C450947003027F2 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A5E7F40E1C450CAD003027F2 /* NTAddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTAddCommentViewController.swift; sourceTree = "<group>"; };
+		A5E7F4101C45B2D1003027F2 /* activityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = activityIndicator.swift; sourceTree = "<group>"; };
 		D2C58C115F4C0137CB82BB9C /* Pods-NaijaTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaijaTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NaijaTalk/Pods-NaijaTalk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				A58111731C40D35500A3939C /* NTGenericVC.swift */,
+				A5E7F4101C45B2D1003027F2 /* activityIndicator.swift */,
 			);
 			name = "Generic Classes";
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			files = (
 				A58111841C41085C00A3939C /* NTUser.swift in Sources */,
 				A5E7F40B1C44E258003027F2 /* NTFeedDetailsTableViewController.swift in Sources */,
+				A5E7F4111C45B2D1003027F2 /* activityIndicator.swift in Sources */,
 				A5E7F3E91C442A0C003027F2 /* NTCommentTableViewCell.swift in Sources */,
 				A581117F1C40E89900A3939C /* NTLoginViewController.swift in Sources */,
 				A5E7F3B91C42903F003027F2 /* NTCreateFeedViewController.swift in Sources */,

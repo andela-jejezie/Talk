@@ -27,6 +27,10 @@ class NTFirebaseHelper {
         return Firebase(url:"https://naijatalk.firebaseio.com/")
     }()
     
+    lazy var commentsRef: Firebase? = {
+        return Firebase(url:"https://naijatalk.firebaseio.com/").childByAppendingPath("comments")
+    }()
+    
     lazy var dateToString: String? = {
         let dateFormater = NSDateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -54,6 +58,16 @@ class NTFirebaseHelper {
         userdefault.setObject(userProfile["id"] as! String, forKey: "ntUserUid")
         
         return user!
+    }
+    
+    func updateFeedLike(feed:NTlogs) {
+        var numLike = feed.likes
+        numLike++
+        let feedRef = NTFirebaseHelper.shared.logsRef?.childByAppendingPath(feed.postLogger).childByAppendingPath(feed.uid)
+        let update = [
+            "likes":numLike
+        ]
+        feedRef?.updateChildValues(update)
     }
     
 

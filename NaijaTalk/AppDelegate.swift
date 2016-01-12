@@ -22,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 //        IQKeyboardManager.sharedManager().enable = true
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         Fabric.with([Twitter.self])
+        
+
         return true
     }
 
