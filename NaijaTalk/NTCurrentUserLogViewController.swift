@@ -16,19 +16,24 @@ class NTCurrentUserLogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 250
+        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        var logFeds = [NTlogs]()
         currentUserLogRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
             for item in snapshot.children {
                 let feed = NTlogs(snapshot: item as! FDataSnapshot)
-                self.feeds.append(feed)
+                logFeds.append(feed)
                 print(feed)
             }
+            self.feeds = logFeds
+            self.tableView.reloadData()
         })
-        self.tableView.reloadData()
+
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -38,9 +43,7 @@ class NTCurrentUserLogViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "MyFeedDetails" {
-            let destinationViewController = segue.destinationViewController as! NTFeedDetailViewController
-            destinationViewController.feed = sender as! NTlogs
-            destinationViewController.logger = NTFirebaseHelper.shared.sharedUser
+      
         }
     }
 
@@ -54,7 +57,7 @@ extension NTCurrentUserLogViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("NTMyFeedCell") as! NTFeedsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyFeedCell") as! MyFeedTableViewCell
         let feed = feeds[indexPath.row]
 
         cell.nameLabel.text = NTFirebaseHelper.shared.sharedUser.name

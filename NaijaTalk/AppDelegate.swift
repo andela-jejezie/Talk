@@ -11,7 +11,6 @@ import Google
 import FBSDKLoginKit
 import Fabric
 import TwitterKit
-import IQKeyboardManagerSwift
 
 
 @UIApplicationMain

@@ -43,11 +43,15 @@ class NTFirebaseHelper {
         let user: NTUser?
         if (provider == "google") {
             user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"", createdDate:dateToString!)
+            
+            
         }
         else {
             user = NTUser(name: userProfile["name"] as! String, email:userProfile["email"] as? String, gender: userProfile["gender"] as! String, uid: userProfile["id"] as! String, picture:userProfile["picture"]!["data"]!!["url"] as? String, stateOfOrigin:"", job:"", stateOfResidence:"", createdDate:dateToString!)
         }
         userRef.setValue(user!.toAnyObject())
+        let userdefault = NSUserDefaults()
+        userdefault.setObject(userProfile["id"] as! String, forKey: "ntUserUid")
         
         return user!
     }

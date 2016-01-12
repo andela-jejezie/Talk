@@ -29,6 +29,7 @@ class NTLoggedFeedsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 300
+        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
         // Do any additional setup after loading the view.
     }
     
@@ -57,9 +58,7 @@ class NTLoggedFeedsViewController: UIViewController, UITableViewDataSource, UITa
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "FeedDetails" {
-            let destinationViewController = segue.destinationViewController as! NTFeedDetailViewController
-            destinationViewController.feed = sender as! NTlogs
-            destinationViewController.logger = self.logger!
+         
         }
     }
 }

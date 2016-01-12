@@ -33,7 +33,12 @@
 		A5E7F3B71C428509003027F2 /* NTFeedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3B61C428509003027F2 /* NTFeedsTableViewCell.swift */; };
 		A5E7F3B91C42903F003027F2 /* NTCreateFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3B81C42903F003027F2 /* NTCreateFeedViewController.swift */; };
 		A5E7F3BB1C42B9CA003027F2 /* NTLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3BA1C42B9CA003027F2 /* NTLogs.swift */; };
-		A5E7F3E51C438058003027F2 /* NTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3E41C438058003027F2 /* NTFeedDetailViewController.swift */; };
+		A5E7F3E71C441891003027F2 /* MyFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3E61C441891003027F2 /* MyFeedTableViewCell.swift */; };
+		A5E7F3E91C442A0C003027F2 /* NTCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3E81C442A0C003027F2 /* NTCommentTableViewCell.swift */; };
+		A5E7F3EB1C443B62003027F2 /* NTFeedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3EA1C443B62003027F2 /* NTFeedDetailTableViewCell.swift */; };
+		A5E7F40B1C44E258003027F2 /* NTFeedDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40A1C44E258003027F2 /* NTFeedDetailsTableViewController.swift */; };
+		A5E7F40D1C450947003027F2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40C1C450947003027F2 /* Comment.swift */; };
+		A5E7F40F1C450CAD003027F2 /* NTAddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F40E1C450CAD003027F2 /* NTAddCommentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +93,12 @@
 		A5E7F3B61C428509003027F2 /* NTFeedsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTFeedsTableViewCell.swift; sourceTree = "<group>"; };
 		A5E7F3B81C42903F003027F2 /* NTCreateFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCreateFeedViewController.swift; sourceTree = "<group>"; };
 		A5E7F3BA1C42B9CA003027F2 /* NTLogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTLogs.swift; sourceTree = "<group>"; };
-		A5E7F3E41C438058003027F2 /* NTFeedDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTFeedDetailViewController.swift; sourceTree = "<group>"; };
+		A5E7F3E61C441891003027F2 /* MyFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFeedTableViewCell.swift; sourceTree = "<group>"; };
+		A5E7F3E81C442A0C003027F2 /* NTCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCommentTableViewCell.swift; sourceTree = "<group>"; };
+		A5E7F3EA1C443B62003027F2 /* NTFeedDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTFeedDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A5E7F40A1C44E258003027F2 /* NTFeedDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTFeedDetailsTableViewController.swift; sourceTree = "<group>"; };
+		A5E7F40C1C450947003027F2 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		A5E7F40E1C450CAD003027F2 /* NTAddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTAddCommentViewController.swift; sourceTree = "<group>"; };
 		D2C58C115F4C0137CB82BB9C /* Pods-NaijaTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NaijaTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NaijaTalk/Pods-NaijaTalk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,7 +241,8 @@
 				A5E7F3AF1C4271E1003027F2 /* NTLoggedFeedsViewController.swift */,
 				A5E7F3B11C42721D003027F2 /* NTCurrentUserLogViewController.swift */,
 				A5E7F3B81C42903F003027F2 /* NTCreateFeedViewController.swift */,
-				A5E7F3E41C438058003027F2 /* NTFeedDetailViewController.swift */,
+				A5E7F40A1C44E258003027F2 /* NTFeedDetailsTableViewController.swift */,
+				A5E7F40E1C450CAD003027F2 /* NTAddCommentViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 			children = (
 				A58111831C41085C00A3939C /* NTUser.swift */,
 				A5E7F3BA1C42B9CA003027F2 /* NTLogs.swift */,
+				A5E7F40C1C450947003027F2 /* Comment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -250,6 +262,9 @@
 			children = (
 				A5E7F3B41C427485003027F2 /* NTFeedCell.xib */,
 				A5E7F3B61C428509003027F2 /* NTFeedsTableViewCell.swift */,
+				A5E7F3E61C441891003027F2 /* MyFeedTableViewCell.swift */,
+				A5E7F3E81C442A0C003027F2 /* NTCommentTableViewCell.swift */,
+				A5E7F3EA1C443B62003027F2 /* NTFeedDetailTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -454,6 +469,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58111841C41085C00A3939C /* NTUser.swift in Sources */,
+				A5E7F40B1C44E258003027F2 /* NTFeedDetailsTableViewController.swift in Sources */,
+				A5E7F3E91C442A0C003027F2 /* NTCommentTableViewCell.swift in Sources */,
 				A581117F1C40E89900A3939C /* NTLoginViewController.swift in Sources */,
 				A5E7F3B91C42903F003027F2 /* NTCreateFeedViewController.swift in Sources */,
 				A58111781C40D41100A3939C /* NTFirebaseHelper.swift in Sources */,
@@ -462,9 +479,12 @@
 				A5E7F3B21C42721D003027F2 /* NTCurrentUserLogViewController.swift in Sources */,
 				A581118C1C417ACC00A3939C /* NTUserProfileUpdateViewController.swift in Sources */,
 				A5E7F3B71C428509003027F2 /* NTFeedsTableViewCell.swift in Sources */,
+				A5E7F40D1C450947003027F2 /* Comment.swift in Sources */,
 				A5E7F3B01C4271E1003027F2 /* NTLoggedFeedsViewController.swift in Sources */,
-				A5E7F3E51C438058003027F2 /* NTFeedDetailViewController.swift in Sources */,
+				A5E7F40F1C450CAD003027F2 /* NTAddCommentViewController.swift in Sources */,
+				A5E7F3E71C441891003027F2 /* MyFeedTableViewCell.swift in Sources */,
 				A581113D1C40B82000A3939C /* AppDelegate.swift in Sources */,
+				A5E7F3EB1C443B62003027F2 /* NTFeedDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

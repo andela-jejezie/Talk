@@ -65,7 +65,8 @@ class NTLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDel
                                 
                                 print("this is authdata \(snapshot) ")
                                 NTFirebaseHelper.shared.sharedUser = NTUser(snapshot: snapshot)
-                                
+                                let userdefault = NSUserDefaults()
+                                userdefault.setObject(userProfile["id"] as! String, forKey: "ntUserUid")
                                 self.performSegueWithIdentifier("LoginToTabBar", sender: nil)
                                 
                             }else {
@@ -85,7 +86,24 @@ class NTLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDel
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let userdefault = NSUserDefaults()
+        if let userUid = userdefault.valueForKey("ntUserUid") as? String{
+            print(userUid)
+            if !userUid.isEmpty {
+                let userRef =  NTFirebaseHelper.shared.usersRef?.childByAppendingPath(userUid)
+                userRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
+                    userRef?.removeAllObservers();
+                    if  (snapshot.exists()) {
+                        
+                        print("this is authdata \(snapshot) ")
+                        NTFirebaseHelper.shared.sharedUser = NTUser(snapshot: snapshot)
+                        self.performSegueWithIdentifier("LoginToTabBar", sender: nil)
+                        
+                    }
+                })
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
