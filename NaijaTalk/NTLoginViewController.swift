@@ -104,7 +104,26 @@ class NTLoginViewController: UIViewController,FBSDKLoginButtonDelegate, GIDSignI
         }else {
             print("successful \(user) ")
             NTFirebaseHelper.shared.ref!.authWithOAuthProvider("google", token: user.authentication.accessToken, withCompletionBlock: { (error:NSError!, authData:FAuthData!) -> Void in
-                if let _:[String:AnyObject] = authData.providerData["cachedUserProfile"] as? [String: AnyObject] {                    
+                if let userProfile:[String:AnyObject] = authData.providerData["cachedUserProfile"] as? [String: AnyObject] {
+                    
+                    let userRef =  NTFirebaseHelper.shared.usersRef?.childByAppendingPath(userProfile["id"] as! String)
+                    userRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
+                        userRef?.removeAllObservers();
+                        if  (snapshot.exists()) {
+                            
+                            print("this is authdata \(snapshot) ")
+                            NTFirebaseHelper.shared.sharedUser = NTUser(snapshot: snapshot)
+                            let userdefault = NSUserDefaults()
+                            userdefault.setObject(userProfile["id"] as! String, forKey: "ntUserUid")
+                            self.performSegueWithIdentifier("LoginToTabBar", sender: nil)
+                            
+                        }else {
+                            print("this is authdata \(snapshot.value) ")
+                            NTFirebaseHelper.shared.sharedUser = NTFirebaseHelper.shared.saveProviderData(userProfile, provider: authData.provider)
+                            self.performSegueWithIdentifier("loginToUpdateSegue", sender: nil)
+                            
+                        }
+                    })
                 }
 
             })

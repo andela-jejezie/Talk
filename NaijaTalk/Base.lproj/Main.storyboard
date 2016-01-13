@@ -769,9 +769,6 @@
                     </tableView>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <segue destination="aMp-rX-btm" kind="presentation" identifier="AddComment" id="wTG-rr-Y4n"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9vj-gE-mJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -780,7 +777,7 @@
         <!--Add Comment View Controller-->
         <scene sceneID="Wgu-db-sQY">
             <objects>
-                <viewController storyboardIdentifier="NTAddCommentViewController" id="aMp-rX-btm" customClass="NTAddCommentViewController" customModule="NaijaTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NTAddCommentViewController" automaticallyAdjustsScrollViewInsets="NO" id="aMp-rX-btm" customClass="NTAddCommentViewController" customModule="NaijaTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NcF-aT-flL"/>
                         <viewControllerLayoutGuide type="bottom" id="S29-vd-Ny6"/>
@@ -790,7 +787,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOX-4R-yva">
-                                <rect key="frame" x="20" y="288" width="560" height="40"/>
+                                <rect key="frame" x="20" y="284" width="560" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="N51-tW-YIc"/>
                                 </constraints>
@@ -798,21 +795,22 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cid-uV-y8J">
-                                <rect key="frame" x="20" y="88" width="560" height="180"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SP4-Dh-ZDR">
+                                <rect key="frame" x="20" y="84" width="560" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WOX-4R-yva" secondAttribute="trailing" constant="20" id="0aj-Ly-678"/>
-                            <constraint firstItem="Cid-uV-y8J" firstAttribute="height" secondItem="ZRS-Uf-zSp" secondAttribute="height" multiplier="0.3" id="5ve-NW-hJO"/>
-                            <constraint firstItem="Cid-uV-y8J" firstAttribute="leading" secondItem="ZRS-Uf-zSp" secondAttribute="leading" constant="20" id="8Uv-zR-Nr5"/>
                             <constraint firstItem="WOX-4R-yva" firstAttribute="leading" secondItem="ZRS-Uf-zSp" secondAttribute="leading" constant="20" id="Bj6-Ow-rhq"/>
-                            <constraint firstAttribute="trailing" secondItem="Cid-uV-y8J" secondAttribute="trailing" constant="20" id="FsO-mf-Ex6"/>
-                            <constraint firstItem="WOX-4R-yva" firstAttribute="top" secondItem="Cid-uV-y8J" secondAttribute="bottom" constant="20" id="hXb-DR-k3p"/>
-                            <constraint firstItem="Cid-uV-y8J" firstAttribute="top" secondItem="NcF-aT-flL" secondAttribute="bottom" constant="24" id="qUj-ca-j9h"/>
+                            <constraint firstItem="WOX-4R-yva" firstAttribute="top" secondItem="SP4-Dh-ZDR" secondAttribute="bottom" constant="20" id="DdE-E7-vv5"/>
+                            <constraint firstItem="SP4-Dh-ZDR" firstAttribute="top" secondItem="NcF-aT-flL" secondAttribute="bottom" constant="20" id="Guz-yM-851"/>
+                            <constraint firstAttribute="trailing" secondItem="SP4-Dh-ZDR" secondAttribute="trailing" constant="20" id="Ilr-cc-u2m"/>
+                            <constraint firstItem="SP4-Dh-ZDR" firstAttribute="height" secondItem="ZRS-Uf-zSp" secondAttribute="height" multiplier="0.3" id="uXc-Rg-yL0"/>
+                            <constraint firstItem="SP4-Dh-ZDR" firstAttribute="leading" secondItem="ZRS-Uf-zSp" secondAttribute="leading" constant="20" id="vZJ-fm-a8a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HwR-UD-nkK">
@@ -826,7 +824,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="commentBtn" destination="WOX-4R-yva" id="sb2-76-YxW"/>
-                        <outlet property="commentTextfield" destination="Cid-uV-y8J" id="VuI-Bj-XKh"/>
+                        <outlet property="commentTextView" destination="SP4-Dh-ZDR" id="rNM-rZ-y7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1OI-T3-JX1" userLabel="First Responder" sceneMemberID="firstResponder"/>

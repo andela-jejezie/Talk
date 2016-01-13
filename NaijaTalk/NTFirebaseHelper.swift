@@ -70,6 +70,16 @@ class NTFirebaseHelper {
         feedRef?.updateChildValues(update)
     }
     
+    func updateNumOfComment(feed:NTlogs) {
+        var numComment = feed.numberOfComment
+        numComment++
+        let feedRef = logsRef?.childByAppendingPath(feed.postLogger).childByAppendingPath(feed.uid)
+        let update = [
+            "numberOfComment":numComment
+        ]
+        feedRef?.updateChildValues(update)
+    }
+    
 
     
     

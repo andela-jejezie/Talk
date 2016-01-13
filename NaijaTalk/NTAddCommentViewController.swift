@@ -11,13 +11,13 @@ import UIKit
 class NTAddCommentViewController: UIViewController, MBProgressHUDDelegate {
 
     @IBOutlet var commentBtn: UIButton!
-    @IBOutlet var commentTextfield: UITextField!
     
+    @IBOutlet var commentTextView: UITextView!
     var feed: NTlogs!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        commentTextfield.becomeFirstResponder()
+        commentTextView.becomeFirstResponder()
         commentBtn.addTarget(self, action: "postComment:", forControlEvents: .TouchUpInside)
         commentBtn.backgroundColor = UIColor(red: 0.15, green: 0.81, blue: 0.35, alpha: 1)
 
@@ -27,17 +27,17 @@ class NTAddCommentViewController: UIViewController, MBProgressHUDDelegate {
     override func viewDidLayoutSubviews() {
         commentBtn.layer.cornerRadius = 5
         commentBtn.clipsToBounds = true
-        commentTextfield.layer.borderWidth = 1
-        commentTextfield.layer.borderColor = UIColor.lightGrayColor().CGColor
-        commentTextfield.layer.cornerRadius = 2
-        commentTextfield.clipsToBounds = true
+        commentTextView.layer.borderWidth = 1
+        commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        commentTextView.layer.cornerRadius = 2
+        commentTextView.clipsToBounds = true
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     func postComment(sender:UIButton) {
-        if ((commentTextfield.text?.isEmpty) == true) {
+        if ((commentTextView.text?.isEmpty) == true) {
             let alert = UIAlertController(title: "", message: "Comment can not be empty", preferredStyle: UIAlertControllerStyle.Alert)
            let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             alert.dismissViewControllerAnimated(true, completion: nil)
@@ -61,8 +61,9 @@ class NTAddCommentViewController: UIViewController, MBProgressHUDDelegate {
     }
     
     func post(){
+        NTFirebaseHelper.shared.updateNumOfComment(feed)
         let commentRef = NTFirebaseHelper.shared.commentsRef?.childByAppendingPath(feed.uid).childByAutoId()
-        let comment = Comment(comment: commentTextfield.text!, commentOwnerID: NTFirebaseHelper.shared.sharedUser.uid, postCommentedID: feed.uid, commentOwnerName: NTFirebaseHelper.shared.sharedUser.name, commentOwnerPic: NTFirebaseHelper.shared.sharedUser.picture!, createdDate: NTFirebaseHelper.shared.dateToString!)
+        let comment = Comment(comment: commentTextView.text!, commentOwnerID: NTFirebaseHelper.shared.sharedUser.uid, postCommentedID: feed.uid, commentOwnerName: NTFirebaseHelper.shared.sharedUser.name, commentOwnerPic: NTFirebaseHelper.shared.sharedUser.picture!, createdDate: NTFirebaseHelper.shared.dateToString!)
         commentRef?.setValue(comment.toAnyObject(), withCompletionBlock: { (error:NSError!, firebase:Firebase!) -> Void in
             if error != nil {
                 print("error occurred \(error)")
@@ -73,4 +74,5 @@ class NTAddCommentViewController: UIViewController, MBProgressHUDDelegate {
             }
         })
     }
+
 }

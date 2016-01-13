@@ -110,6 +110,16 @@ extension NTCurrentUserLogViewController: UITableViewDelegate, UITableViewDataSo
             let decodedImageData = NSData(base64EncodedString: feed.logImage, options: NSDataBase64DecodingOptions(rawValue: 0))
             cell.feedImageView?.image = UIImage(data: decodedImageData!)
         }
+        
+        if feed.likes > 0 {
+            cell.numOfLikeLabel.text = String(feed.likes) + " Like"
+            cell.numOfLikeLabel.hidden = false
+        }
+        if feed.numberOfComment > 0 {
+            cell.numOfCommentLabel.text = String(feed.numberOfComment) + " Comment"
+            cell.numOfCommentLabel.hidden = false
+        }
+        
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

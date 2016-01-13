@@ -24,22 +24,20 @@ class NTLoggedFeedsViewController: UIViewController,MBProgressHUDDelegate, UITab
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.view.addSubview(spinner)
-        spinner.mode = MBProgressHUDMode.Indeterminate
-        spinner.delegate = self
-        spinner.labelText = "Loading..."
-        spinner.detailsLabelText = "Just a second :)"
-        spinner.square = true
-        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
-            self.getFeeds()
-            }) { () -> Void in
-//                spinner.hide(true)
-        }
-
+        self.getFeeds()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.navigationItem.hidesBackButton = true
     }
     
     func getFeeds(){
+         let progressHud = ProgressHUD(text: "Loading...")
+        if self.feeds.count == 0 {
+            self.view.addSubview(progressHud)
+            progressHud.show()
+            
+        }
         NTFirebaseHelper.shared.logsRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
             var logFeeds = [NTlogs]()
             for item in snapshot.children {
@@ -51,16 +49,17 @@ class NTLoggedFeedsViewController: UIViewController,MBProgressHUDDelegate, UITab
                 }
             }
             self.feeds = logFeeds
+            progressHud.hide()
             self.tableView.reloadData()
             
             
         })
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(true)
-        NTFirebaseHelper.shared.logsRef?.removeAllObservers()
-    }
+//    override func viewDidDisappear(animated: Bool) {
+//        super.viewDidDisappear(true)
+//        NTFirebaseHelper.shared.logsRef?.removeAllObservers()
+//    }
     
     func addComment(sender: UIButton) {
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("NTAddCommentViewController") as! NTAddCommentViewController
@@ -115,6 +114,15 @@ extension NTLoggedFeedsViewController {
         }else {
             let decodedImageData = NSData(base64EncodedString: feed.logImage, options: NSDataBase64DecodingOptions(rawValue: 0))
             cell.feedImageView?.image = UIImage(data: decodedImageData!)
+        }
+        
+        if feed.likes > 0 {
+            cell.numOfLikeLabel.text = String(feed.likes) + " Like"
+            cell.numOfLikeLabel.hidden = false
+        }
+        if feed.numberOfComment > 0 {
+            cell.numOfCommentLabel.text = String(feed.numberOfComment) + " Comment"
+            cell.numOfCommentLabel.hidden = false
         }
         
         return cell

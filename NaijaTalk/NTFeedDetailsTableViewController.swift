@@ -117,6 +117,7 @@ class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDele
     
     func like(sender:UIButton) {
         NTFirebaseHelper.shared.updateFeedLike(feed)
+        self.tableView.reloadData()
     }
 
     
