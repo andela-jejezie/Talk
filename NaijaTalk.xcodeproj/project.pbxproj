@@ -23,10 +23,6 @@
 		A58111881C410D1A00A3939C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58111871C410D1A00A3939C /* FBSDKLoginKit.framework */; };
 		A581118A1C410D2300A3939C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58111891C410D2300A3939C /* FBSDKShareKit.framework */; };
 		A581118C1C417ACC00A3939C /* NTUserProfileUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A581118B1C417ACB00A3939C /* NTUserProfileUpdateViewController.swift */; };
-		A5E7F3AB1C4257B5003027F2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7F3A71C4257B5003027F2 /* Fabric.framework */; };
-		A5E7F3AC1C4257B5003027F2 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7F3A81C4257B5003027F2 /* TwitterKit.framework */; };
-		A5E7F3AD1C4257B5003027F2 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5E7F3A91C4257B5003027F2 /* TwitterKitResources.bundle */; };
-		A5E7F3AE1C4257B6003027F2 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7F3AA1C4257B5003027F2 /* TwitterCore.framework */; };
 		A5E7F3B01C4271E1003027F2 /* NTLoggedFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3AF1C4271E1003027F2 /* NTLoggedFeedsViewController.swift */; };
 		A5E7F3B21C42721D003027F2 /* NTCurrentUserLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7F3B11C42721D003027F2 /* NTCurrentUserLogViewController.swift */; };
 		A5E7F3B51C427485003027F2 /* NTFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E7F3B41C427485003027F2 /* NTFeedCell.xib */; };
@@ -84,10 +80,6 @@
 		A58111871C410D1A00A3939C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		A58111891C410D2300A3939C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A581118B1C417ACB00A3939C /* NTUserProfileUpdateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTUserProfileUpdateViewController.swift; sourceTree = "<group>"; };
-		A5E7F3A71C4257B5003027F2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		A5E7F3A81C4257B5003027F2 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
-		A5E7F3A91C4257B5003027F2 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		A5E7F3AA1C4257B5003027F2 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		A5E7F3AF1C4271E1003027F2 /* NTLoggedFeedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTLoggedFeedsViewController.swift; sourceTree = "<group>"; };
 		A5E7F3B11C42721D003027F2 /* NTCurrentUserLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NTCurrentUserLogViewController.swift; sourceTree = "<group>"; };
 		A5E7F3B41C427485003027F2 /* NTFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTFeedCell.xib; sourceTree = "<group>"; };
@@ -110,11 +102,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A581118A1C410D2300A3939C /* FBSDKShareKit.framework in Frameworks */,
-				A5E7F3AB1C4257B5003027F2 /* Fabric.framework in Frameworks */,
-				A5E7F3AE1C4257B6003027F2 /* TwitterCore.framework in Frameworks */,
 				A58111861C410D1100A3939C /* FBSDKCoreKit.framework in Frameworks */,
 				A58111881C410D1A00A3939C /* FBSDKLoginKit.framework in Frameworks */,
-				A5E7F3AC1C4257B5003027F2 /* TwitterKit.framework in Frameworks */,
 				57B0AE8BA59D5868C88E348D /* libPods-NaijaTalk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,10 +128,6 @@
 		08EC482C4BC3C34439AC28A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A5E7F3A71C4257B5003027F2 /* Fabric.framework */,
-				A5E7F3A81C4257B5003027F2 /* TwitterKit.framework */,
-				A5E7F3A91C4257B5003027F2 /* TwitterKitResources.bundle */,
-				A5E7F3AA1C4257B5003027F2 /* TwitterCore.framework */,
 				A58111891C410D2300A3939C /* FBSDKShareKit.framework */,
 				A58111871C410D1A00A3939C /* FBSDKLoginKit.framework */,
 				A58111851C410D1100A3939C /* FBSDKCoreKit.framework */,
@@ -285,7 +270,6 @@
 				A58111371C40B82000A3939C /* Resources */,
 				4EE969BB27EF278DCD0D4C25 /* Embed Pods Frameworks */,
 				46099C7C7F5D2379ED8D08B5 /* Copy Pods Resources */,
-				A5E7F3A61C425768003027F2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -384,7 +368,6 @@
 				A58111811C40EDE600A3939C /* GoogleService-Info.plist in Resources */,
 				A58111471C40B82100A3939C /* Assets.xcassets in Resources */,
 				A58111421C40B82000A3939C /* Main.storyboard in Resources */,
-				A5E7F3AD1C4257B5003027F2 /* TwitterKitResources.bundle in Resources */,
 				A5E7F3B51C427485003027F2 /* NTFeedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,19 +418,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NaijaTalk/Pods-NaijaTalk-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		A5E7F3A61C425768003027F2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 92952a26d293f1a3156a9e7aa52641b3ee25ad93 f3adbdea1c8988513335d8c1d77a25586d9e2fc2a58c9167af5d363b95f5fa03";
 		};
 		B7265333E2771DD1A3496955 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

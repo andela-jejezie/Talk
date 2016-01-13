@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTCurrentUserLogViewController: UIViewController, MBProgressHUDDelegate {
+class NTCurrentUserLogViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     private var feeds = [NTlogs]()
@@ -17,27 +17,14 @@ class NTCurrentUserLogViewController: UIViewController, MBProgressHUDDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 250
-        tableView.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: -40, left: 0, bottom: 0, right: 0)
+        self.tabBarController?.navigationItem.title = "My Post"
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.view.addSubview(spinner)
-        spinner.mode = MBProgressHUDMode.Indeterminate
-        spinner.delegate = self
-        spinner.labelText = "Loading..."
-        spinner.detailsLabelText = "Just a second :)"
-        spinner.square = true
-        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.getMyFedds()
-            }) { () -> Void in
-//                spinner.hide(true)
-        }
-        
-
-
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -46,14 +33,22 @@ class NTCurrentUserLogViewController: UIViewController, MBProgressHUDDelegate {
     }
     
     func getMyFedds(){
+        let progressHud = ProgressHUD(text: "Loading...")
+        if self.feeds.count == 0 {
+            self.view.addSubview(progressHud)
+            progressHud.show()
+            
+        }
         var logFeds = [NTlogs]()
         currentUserLogRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
+            
             for item in snapshot.children {
                 let feed = NTlogs(snapshot: item as! FDataSnapshot)
                 logFeds.append(feed)
                 print(feed)
             }
             self.feeds = logFeds
+            progressHud.hide()
             self.tableView.reloadData()
         })
     }

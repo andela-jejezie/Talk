@@ -9,8 +9,7 @@
 import UIKit
 import Google
 import FBSDKLoginKit
-import Fabric
-import TwitterKit
+
 
 
 @UIApplicationMain
@@ -25,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInUIDelegate {
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        Fabric.with([Twitter.self])
         
 
         return true

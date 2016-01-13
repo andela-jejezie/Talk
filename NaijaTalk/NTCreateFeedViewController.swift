@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITabBarControllerDelegate {
+class NTCreateFeedViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var postLogBtn: UIButton!
@@ -26,6 +26,7 @@ class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITab
         picker.delegate = self
         uploadPicBtn.addTarget(self, action: "imageUploadActionSheet:", forControlEvents: .TouchUpInside)
         postLogBtn.addTarget(self, action: "postToDatabase:", forControlEvents: .TouchUpInside)
+        self.tabBarController?.navigationItem.title = "Create Post"
         // Do any additional setup after loading the view.
     }
     
@@ -46,32 +47,27 @@ class NTCreateFeedViewController: UIViewController, MBProgressHUDDelegate, UITab
     
     
     func postToDatabase(sender: AnyObject) {
-        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.view.addSubview(spinner)
-        spinner.mode = MBProgressHUDMode.Indeterminate
-        spinner.delegate = self
-        spinner.labelText = "Saving"
-        spinner.detailsLabelText = "Just a second :)"
-        spinner.square = true
-        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.post()
-            }) { () -> Void in
-                self.tabBarController?.selectedIndex = 1
-        }
     }
     
     func post(){
+        let activityIndicator = ProgressHUD(text: "Saving...")
+        self.view.addSubview(activityIndicator)
+        activityIndicator.show()
         let userLogRef = NTFirebaseHelper.shared.logsRef?.childByAppendingPath(NTFirebaseHelper.shared.sharedUser.uid)
         let logRef = userLogRef?.childByAutoId()
         let log:NTlogs = NTlogs(postLogger: NTFirebaseHelper.shared.sharedUser.uid, uid: (logRef?.key)!, headline: topicTextField.text!, location:locationTextField.text! , logDetails: descriptionTextView.text, logImage: imageBase64, date: NTFirebaseHelper.shared.dateToString!, likes: 0, numberOfComment: 0)
         logRef!.setValue(log.toAnyObject()) { (fbError:NSError!, firebase:Firebase!) -> Void in
             if fbError == nil {
-                
+                activityIndicator.hide()
+                self.tabBarController?.selectedIndex = 1
             }else {
+                activityIndicator.hide()
                 print("error \(fbError.description)")
             }
             
         }
+        
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {

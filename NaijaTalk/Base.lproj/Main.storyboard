@@ -34,15 +34,33 @@
                                     <constraint firstAttribute="height" constant="44" id="L0c-0V-okl"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naija Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv4-qU-5da">
+                                <rect key="frame" x="20" y="107" width="560" height="55.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let Your Voice Be Heard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BS1-bb-u6E">
+                                <rect key="frame" x="20" y="463" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hMB-F2-Zih" firstAttribute="width" secondItem="2Zi-wN-k55" secondAttribute="width" multiplier="0.8" id="0Sn-2U-Xp3"/>
+                            <constraint firstItem="Jv4-qU-5da" firstAttribute="trailing" secondItem="2Zi-wN-k55" secondAttribute="trailingMargin" id="5ao-c8-pur"/>
                             <constraint firstItem="jKp-Rq-NTD" firstAttribute="centerY" secondItem="2Zi-wN-k55" secondAttribute="centerY" constant="60" id="7Up-nK-tUE"/>
                             <constraint firstItem="jKp-Rq-NTD" firstAttribute="width" secondItem="2Zi-wN-k55" secondAttribute="width" multiplier="0.8" id="FWI-wA-6BP"/>
+                            <constraint firstItem="BS1-bb-u6E" firstAttribute="trailing" secondItem="2Zi-wN-k55" secondAttribute="trailingMargin" id="PXn-LW-54B"/>
                             <constraint firstItem="jKp-Rq-NTD" firstAttribute="top" secondItem="hMB-F2-Zih" secondAttribute="bottom" constant="11" id="Wgj-rf-2wf"/>
+                            <constraint firstItem="BS1-bb-u6E" firstAttribute="top" secondItem="jKp-Rq-NTD" secondAttribute="bottom" constant="81" id="chJ-rh-Lds"/>
+                            <constraint firstItem="BS1-bb-u6E" firstAttribute="leading" secondItem="2Zi-wN-k55" secondAttribute="leadingMargin" id="dkN-ag-BIb"/>
                             <constraint firstItem="jKp-Rq-NTD" firstAttribute="centerX" secondItem="2Zi-wN-k55" secondAttribute="centerX" id="gdb-hO-fZs"/>
                             <constraint firstItem="hMB-F2-Zih" firstAttribute="centerX" secondItem="jKp-Rq-NTD" secondAttribute="centerX" id="iza-eC-HhO"/>
+                            <constraint firstItem="Jv4-qU-5da" firstAttribute="leading" secondItem="2Zi-wN-k55" secondAttribute="leadingMargin" id="n2x-38-4yp"/>
+                            <constraint firstItem="Jv4-qU-5da" firstAttribute="top" secondItem="HMq-Nc-5sh" secondAttribute="bottom" constant="43" id="pb2-hl-t5i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XOt-mQ-MGn"/>
@@ -57,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="966" y="280"/>
         </scene>
-        <!--Item-->
+        <!--Create Post-->
         <scene sceneID="WOm-ZJ-KG2">
             <objects>
                 <viewController id="bm9-rK-6fH" customClass="NTCreateFeedViewController" customModule="NaijaTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,13 +103,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iJO-8M-b6R">
-                                <rect key="frame" x="20" y="225" width="560" height="180"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-Ve-7ta">
                                 <rect key="frame" x="60" y="421" width="480" height="40"/>
                                 <state key="normal" title="Upload pic"/>
@@ -118,6 +129,12 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iJO-8M-b6R">
+                                <rect key="frame" x="20" y="225" width="560" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -143,7 +160,8 @@
                             <constraint firstItem="Q5Y-Ve-7ta" firstAttribute="height" secondItem="nh2-bt-4W0" secondAttribute="height" id="weq-04-8XJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="vEK-Tv-fqn"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="speech_bubble" id="vEK-Tv-fqn"/>
+                    <navigationItem key="navigationItem" title="Create Post" id="VEd-Vs-TGj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="iJO-8M-b6R" id="azK-MX-nW1"/>
@@ -158,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="784" y="1689"/>
         </scene>
-        <!--My logged Issues-->
+        <!--My Post-->
         <scene sceneID="ESJ-gN-A3n">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="nXY-99-9kk" customClass="NTCurrentUserLogViewController" customModule="NaijaTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -373,7 +391,8 @@
                             <constraint firstItem="Bjt-HU-tiy" firstAttribute="top" secondItem="T5L-vy-bAc" secondAttribute="bottom" id="wOE-t9-7fH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My logged Issues" id="R7N-MH-p0H"/>
+                    <tabBarItem key="tabBarItem" title="My Post" image="online" id="R7N-MH-p0H"/>
+                    <navigationItem key="navigationItem" title="My Post" id="r3c-Pm-kDb"/>
                     <connections>
                         <outlet property="tableView" destination="Bjt-HU-tiy" id="89w-SV-Wv5"/>
                         <segue destination="YBo-y8-KKd" kind="show" identifier="MyFeedDetails" id="4zU-oU-pXj"/>
@@ -599,7 +618,8 @@
                             <constraint firstItem="B86-9F-wO6" firstAttribute="top" secondItem="iAk-fd-d28" secondAttribute="bottom" id="iD2-rb-HTr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feeds" id="1iw-Fb-0a0"/>
+                    <tabBarItem key="tabBarItem" title="Feeds" image="RSS" id="1iw-Fb-0a0"/>
+                    <navigationItem key="navigationItem" title="Feeds" id="xIt-de-L2u"/>
                     <connections>
                         <outlet property="tableView" destination="iAk-fd-d28" id="LjA-Wu-UhB"/>
                         <segue destination="YBo-y8-KKd" kind="show" identifier="FeedDetails" id="29F-KI-jBB"/>
@@ -998,10 +1018,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="RSS" width="25" height="25"/>
         <image name="flag" width="318" height="159"/>
+        <image name="online" width="25" height="25"/>
+        <image name="speech_bubble" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="s4J-OQ-lMB"/>
-        <segue reference="29F-KI-jBB"/>
+        <segue reference="4zU-oU-pXj"/>
     </inferredMetricsTieBreakers>
 </document>

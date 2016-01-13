@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDelegate {
+class NTFeedDetailsTableViewController: UITableViewController {
     
     var feed:NTlogs!
     var feedlogger:NTUser!
@@ -23,18 +23,8 @@ class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDele
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        let spinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.view.addSubview(spinner)
-        spinner.mode = MBProgressHUDMode.Indeterminate
-        spinner.delegate = self
-        spinner.labelText = "Loading..."
-        spinner.detailsLabelText = "Just a second :)"
-        spinner.square = true
-        spinner.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.getComment()
-            }) { () -> Void in
-//                spinner.hide(true)
-        }
+
     }
     
     
@@ -44,6 +34,9 @@ class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDele
     }
     
     func getComment() {
+        let activityIndicator = ProgressHUD(text: "Saving...")
+        self.view.addSubview(activityIndicator)
+        activityIndicator.show()
         commentRef?.observeEventType(.Value, withBlock: { (snapshot:FDataSnapshot!) -> Void in
             var comments = [Comment]()
             for item in snapshot.children {
@@ -58,6 +51,7 @@ class NTFeedDetailsTableViewController: UITableViewController, MBProgressHUDDele
                 self.combinedArray = self.combinedArray + comments
                 comments = []
             }
+            activityIndicator.hide()
             self.tableView.reloadData()
         })
     }
